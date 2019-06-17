@@ -38,19 +38,27 @@
                             <th>Durée</th>
                             <th>Meilleur Score</th>
                             <th>Meilleure durée</th>
+                            <th>Détail</th>
                         </tr> 
                     </thead>
                     <tbody>
-                        <c:forEach items = "${results}" var="result">
+                        <s:iterator value="results">
                             <tr>
-                                <td>${result.theme}</td>
-                                <td>${result.subject}</td>
-                                <td>${result.score}</td>
+                                <td><s:property value="theme"/></td>
+                                <td><s:property value="subject"/></td>
+                                <td><s:property value="score"/></td>
+                                <td><s:property value="hours()"/>:<s:property value="minutes()"/>:<s:property value="seconds()"/></td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
+                                <td>
+                                    <form action="showResult" method="post">
+                                        <input type="hidden" value=<s:property value="#session.userMail"/> name="traineeMail">
+                                        <input type="hidden" value=<s:property value="test_id"/> name="testId"/>
+                                        <input type="submit" class="btn btn-outline-primary" value="0"/> 
+                                    </form>
+                                </td>
                             </tr>
-                        </c:forEach>
+                        </s:iterator>
                     </tbody>
                 </table>    
             </div>

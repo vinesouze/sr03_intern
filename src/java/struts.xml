@@ -49,6 +49,9 @@
         <action name="showUser" class="action.ShowAction" method="show">
             <result name="success">admin/show/showUser.jsp</result>
         </action>
+        <action name="showResult" class="action.ShowAction" method="showOne">
+            <result name="success">admin/show/showResult.jsp</result>
+        </action>
 
 
         

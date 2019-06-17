@@ -15,7 +15,9 @@ import Model.QuestionDAO;
 import Model.Test;
 import Model.TestDAO;
 import com.opensymphony.xwork2.ActionSupport;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -38,9 +40,15 @@ public class ShowAction extends ActionSupport{
         
         int i=0;
         for (Test test : tests) {
+            Date start=test.getTime_start();
+            Timestamp timestamp1 = new Timestamp(start.getTime());
+            Date end=test.getTime_end();
+            Timestamp timestamp2 = new Timestamp(end.getTime());
+            long milliseconds = timestamp2.getTime() - timestamp1.getTime();
+            int seconds = (int) milliseconds/1000;
+            int duree = seconds;
             Form form = formdao.find(test.getForm_id()).get();
-            System.out.println(" ..... : " + form.getTheme() + " ; " + test.score() +  "\n");
-            getResults().add(new FormResult(form.getTheme(),form.getSubject(),test.score(),1,test.getId()));
+            getResults().add(new FormResult(form.getTheme(),form.getSubject(),test.score(),duree,test.getId()));
             System.out.println("result : " + i + " ; " + getResults().get(i).getSubject() + "\n");
             i++;
 
