@@ -14,12 +14,14 @@ public class FormResult {
     private String subject;
     private int score;
     private int duree;
+    private int test_id;
 
-    public FormResult(String theme, String subject, int score, int duree) {
+    public FormResult(String theme, String subject, int score, int duree, int test_id) {
         this.theme = theme;
         this.subject = subject;
         this.score = score;
         this.duree = duree;
+        this.test_id = test_id;
     }
 
     public int hours() {
@@ -64,6 +66,14 @@ public class FormResult {
 
     public void setDuree(int duree) {
         this.duree = duree;
+    }
+
+    public int getTest_id() {
+        return test_id;
+    }
+
+    public void setTest_id(int test_id) {
+        this.test_id = test_id;
     }
     
 }

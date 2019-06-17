@@ -220,4 +220,40 @@ public class AnswerDAO implements DAO<Answer>{
             return null;
         }
     }
+    
+    public Optional<Answer> findGoodAnswer(int id) {
+        try {
+            Connection connexion = null;
+            Statement statement = null;
+            
+            try {
+                Class.forName(DRIVER);
+            } catch(ClassNotFoundException e) {
+                Logger.getLogger(AnswerDAO.class.getName()).log(Level.SEVERE,null,e);
+            }
+            connexion = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+            statement = connexion.createStatement();
+            
+            String query = "SELECT * FROM answers WHERE question_id= '" + id + "' AND is_right=1;";
+            System.out.println("Executing command: " + query + "\n");
+            ResultSet result = statement.executeQuery(query);
+            
+            result.next();
+            int id_answer =result.getInt(1);
+            String statement_answer=result.getString(2);
+            String status = result.getString(3);
+            int rank = result.getInt(4);
+            boolean is_right = result.getBoolean(5);
+            int question_id = result.getInt(6);
+
+            result.close();
+            connexion.close();
+            
+            Answer ret = new Answer(id_answer,statement_answer,status,rank,is_right,question_id);
+            return Optional.ofNullable(ret);
+        } catch(SQLException e) {
+            Logger.getLogger(AnswerDAO.class.getName()).log(Level.SEVERE,null,e);
+            return null;
+        }
+    }
 }

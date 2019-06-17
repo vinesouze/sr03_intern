@@ -62,7 +62,8 @@ public class TraineeAction extends ActionSupport implements SessionAware{
             seconds = (seconds % 3600) % 60;
             System.out.println("durée : " + hours + " heures " + minutes + " minutes " + seconds + "secondes \n");
                     
-            getResults().add(new FormResult(form.getTheme(),form.getSubject(),test.getScore(),duree));
+            getResults().add(new FormResult(form.getTheme(),form.getSubject(),test.getScore(),duree,test.getId()));
+            System.out.println("test id : " + test.getId() + "\n");
         }
         return "success";
     }

@@ -42,6 +42,7 @@
                             <th>Sujet</th>
                             <th>Score</th>
                             <th>Durée</th>
+                            <th>Détail</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +52,13 @@
                                 <td><s:property value="subject"/></td>
                                 <td><s:property value="score"/></td>
                                 <td><s:property value="hours()"/>:<s:property value="minutes()"/>:<s:property value="seconds()"/></td>
+                                <td>
+                                    <form action="DetailResult" method="post">
+                                        <input type="hidden" value=<s:property value="#session.userMail"/> name="traineeMail">
+                                        <input type="hidden" value=<s:property value="test_id"/> name="testId"/>
+                                        <input type="submit" class="btn btn-outline-primary" value="0"/> 
+                                    </form>
+                                </td>
                             </tr>
                         </s:iterator>
                     </tbody>

@@ -7,7 +7,11 @@ package action;
 
 import Model.Answer;
 import Model.AnswerDAO;
+import Model.Form;
+import Model.FormDAO;
+import Model.FormResult;
 import Model.Question;
+import Model.QuestionAnswer;
 import Model.QuestionDAO;
 import Model.Test;
 import Model.TestDAO;
@@ -28,11 +32,16 @@ public class TestActionNext extends ActionSupport{
     private int test_id;
     private int answer_id;
     private Test test = new Test();
+
     private int score=0;
+    private FormResult result;
+    private ArrayList<QuestionAnswer> questions_trainee = new ArrayList<>();
     
     public String next() throws Exception {
         QuestionDAO questiondao = new QuestionDAO();
+        FormDAO formDAO = new FormDAO();
         TestDAO testdao = new TestDAO();
+        AnswerDAO answerdao = new AnswerDAO();
         setQuestionRank(getQuestionRank()+1);
         // TROUVER UNE AUTRE SOLUTION POUR EVITER DE RECUP A CHAQUE FOIS TOUTES LES REPONSES ET QUESTIONS
         ArrayList<Question> questions = questiondao.getAll(testdao.find(getTest_id()).get().getForm_id());
@@ -53,7 +62,21 @@ public class TestActionNext extends ActionSupport{
             // ** UPDATE TEST avec le score ** /
             testdao.update(getTest());
 
-            System.out.println("le score est de " + getScore() + "\n");
+            // ** MAJ du score et de la durée du test
+            Date start=test.getTime_start();
+            Timestamp timestamp1 = new Timestamp(start.getTime());
+
+            long milliseconds = convertTime.getTime() - timestamp1.getTime();
+            int seconds = (int) milliseconds/1000;
+            int duree = seconds;
+            Form form = formDAO.find(getTest().getForm_id()).get();
+            setResult(new FormResult(form.getTheme(),form.getSubject(),getScore(),duree,test_id));
+            
+            // *** MAJ des questions et réponses du stagiaire pour ce test
+            for (Answer answer : testdao.getAnswers(test_id)) {
+                getQuestions_trainee().add(new QuestionAnswer(questiondao.find(answer.getQuestion_id()).get(),answer,answerdao.findGoodAnswer(answer.getQuestion_id()).get()));
+            }
+            
             return "result";
         }
         // On affiche la question suivante
@@ -63,7 +86,6 @@ public class TestActionNext extends ActionSupport{
             }
         }
         // On affiche les réponses associées à cette question
-        AnswerDAO answerdao = new AnswerDAO();
         setAnswers(answerdao.getAll(getQuestion().getId()));
         return "success";
         
@@ -125,6 +147,22 @@ public class TestActionNext extends ActionSupport{
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public FormResult getResult() {
+        return result;
+    }
+
+    public void setResult(FormResult result) {
+        this.result = result;
+    }
+
+    public ArrayList<QuestionAnswer> getQuestions_trainee() {
+        return questions_trainee;
+    }
+
+    public void setQuestions_trainee(ArrayList<QuestionAnswer> questions_trainee) {
+        this.questions_trainee = questions_trainee;
     }
     
     

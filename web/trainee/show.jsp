@@ -1,6 +1,6 @@
 <%-- 
-    Document   : testTraineeResult
-    Created on : 1 juin 2019, 23:59:59
+    Document   : show
+    Created on : 17 juin 2019, 11:54:03
     Author     : Junior
 --%>
 
@@ -20,11 +20,7 @@
     <body>
         <div class="container">
             <div class="row justify-content-md-center">
-                <h2>Voici votre score pour ce Test : ${score} points en <s:property value="result.hours()"/>:<s:property value="result.minutes()"/>:<s:property value="result.seconds()"/></h2>
-            </div>
-            
-            <div class="row justify-content-md-center">
-                <h3>Liste des réponses</h3>
+                <h1>Voici vos réponses à ce questionnaire</h1>
             </div>
             
             <div class="row">
@@ -61,3 +57,4 @@
         </div>
     </body>
 </html>
+

@@ -148,6 +148,9 @@
         <action name="ResultTrainee" class="action.TraineeAction" method="seeResult">
             <result name="success">trainee/resultTrainee.jsp</result>
         </action>
+        <action name="DetailResult" class="action.ShowAction" method="showOne">
+            <result name="success">trainee/show.jsp</result>
+        </action>
 
 
 
