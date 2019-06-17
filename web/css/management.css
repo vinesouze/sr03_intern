@@ -1,0 +1,64 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 juin 2019, 19:06:56
+    Author     : Junior
+*/
+
+body {
+  background: #eee; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #eee, #eee);
+  background: -moz-linear-gradient(right, #stylesheet, #eee);
+  background: -o-linear-gradient(right, #eee, #eee);
+  background: linear-gradient(to left, #eee, #eee);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+
+.form button{
+    margin: 0;
+    color: #fff;
+    background: #58D68D;
+    border: none;
+    width: 508px;
+    height: 35px;
+    margin-top: -20px;
+    margin-left: -4px;
+    border-radius: 4px;
+    border-bottom: 4px solid #117A60;
+    transition: all .2s ease;
+    outline: none;
+}
+    .form button:hover{
+      background: #149174;
+            color: #0C5645;
+    }
+    .form button:active{
+      border:0;
+    }
+    
+table {
+  border-collapse: collapse;
+}
+ th {
+  background: #ccc;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background: #efefef;
+}
+
+tr:hover {
+  background: #d1d1d1;
+}

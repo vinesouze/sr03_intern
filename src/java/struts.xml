@@ -1,0 +1,166 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" namespace="/" extends="struts-default">
+        <default-action-ref name="index"></default-action-ref>
+        
+        <action name="index">
+            <result>index.jsp</result>
+        </action>
+
+        <action name="Login" class="action.LoginAction">
+            <result name="loginAdmin">admin/loginAdmin.jsp</result>
+            <result name="loginTrainee">trainee/loginTrainee.jsp</result>
+            <result name="failure">index.jsp</result>
+        </action>
+
+        <action name="LoginTrainee" class="action.LoginUser">
+            <result name="success">trainee/loginTrainee.jsp</result>
+        </action>
+        <action name="LoginAdmin" class="action.LoginUser">
+            <result name="success">admin/loginAdmin.jsp</result>
+        </action>
+
+
+
+        <action name="usersManagement" class="action.userManagement">
+            <result name="success">admin/management/usersManagement.jsp</result>
+        </action>
+        <action name="addUserForm">
+            <result>admin/add/addUserForm.jsp</result>
+        </action>
+        <action name="addUser" class="action.UserAction" method="addUser">
+            <result name="success">admin/management/usersManagement.jsp</result>
+        </action>
+        <action name="modifyUser" class="action.UserAction" method="modifyUser">
+            <result name="success">admin/modify/modifyUser.jsp</result>
+            <result name="failure">echec.jsp</result>
+        </action>
+        <action name="modifyUserSubmit" class="action.UserAction" method="modifyUserSubmit">
+            <result name="success">admin/management/usersManagement.jsp</result>
+        </action>
+        <action name="activateUser" class="action.UserAction" method="activateUser">
+            <result name="success">admin/management/usersManagement.jsp</result>
+            <result name="failure">echec.jsp</result>
+        </action>
+        <action name="showUser" class="action.ShowAction" method="show">
+            <result name="success">admin/show/showUser.jsp</result>
+        </action>
+
+
+        
+        <action name="formManagement" class="action.FormAction" method="listForm">
+            <result>admin/management/formsManagement.jsp</result>
+        </action>
+        <action name="addTheme" class="action.FormAction" method="addTheme">
+            <result name="success">admin/add/addForm.jsp</result>
+        </action>
+        <action name="addForm" class="action.FormAction" method="listTheme">
+            <result name="success">admin/add/addForm.jsp</result>
+        </action>
+        <action name="addFormSubmit" class="action.FormAction" method="addForm">
+            <result name="success">admin/management/formsManagement.jsp</result>
+        </action>
+        <action name="activateForm" class="action.FormAction" method="activateForm">
+            <result name="success">admin/management/formsManagement.jsp</result>
+        </action>
+        <action name="modifyForm" class="action.FormAction" method="modifyForm">
+            <result name="success">admin/modify/modifyForm.jsp</result>
+        </action>
+        <action name="modifyFormSubmit" class="action.FormAction" method="modifyFormSubmit">
+            <result name="success">admin/management/formsManagement.jsp</result>
+        </action>
+
+
+
+        <action name="questionManagement" class="action.QuestionAction" method="listQuestion">
+            <result>admin/management/questionsManagement.jsp</result>
+        </action>
+        <action name="addQuestion" class="action.QuestionAction" method="addQuestion">
+            <result name="success">admin/add/addQuestion.jsp</result>
+        </action>
+        <action name="addQuestionSubmit" class="action.QuestionAction" method="addQuestionSubmit">
+            <result name="success">admin/management/questionsManagement.jsp</result>
+        </action>
+        <action name="downQuestion" class="action.QuestionAction" method="down">
+            <result name="success">admin/management/questionsManagement.jsp</result>
+        </action>
+        <action name="upQuestion" class="action.QuestionAction" method="up">
+            <result name="success">admin/management/questionsManagement.jsp</result>
+        </action>
+        <action name="activateQuestion" class="action.QuestionAction" method="activateQuestion">
+            <result name="success">admin/management/questionsManagement.jsp</result>
+        </action>
+        <action name="modifyQuestion" class="action.QuestionAction" method="modifyQuestion">
+            <result name="success">admin/modify/modifyQuestion.jsp</result>
+            <result name="failure">echec.jsp</result>
+        </action>
+        <action name="modifyQuestionSubmit" class="action.QuestionAction" method="modifyQuestionSubmit">
+            <result name="success">admin/management/questionsManagement.jsp</result>
+        </action>
+
+
+
+        <action name="answerManagement" class="action.AnswerAction" method="listAnswer">
+            <result>admin/management/answersManagement.jsp</result>
+        </action>
+        <action name="addAnswer" class="action.AnswerAction" method="addAnswer">
+            <result name="success">admin/add/addAnswer.jsp</result>
+        </action>
+        <action name="addAnswerSubmit" class="action.AnswerAction" method="addAnswerSubmit">
+            <result name="success">admin/management/answersManagement.jsp</result>
+        </action>
+        <action name="downAnswer" class="action.AnswerAction" method="down">
+            <result name="success">admin/management/answersManagement.jsp</result>
+        </action>
+        <action name="upAnswer" class="action.AnswerAction" method="up">
+            <result name="success">admin/management/answersManagement.jsp</result>
+        </action>
+        <action name="modifyAnswer" class="action.AnswerAction" method="modifyAnswer">
+            <result name="success">admin/modify/modifyAnswer.jsp</result>
+            <result name="failure">echec.jsp</result>
+        </action>
+        <action name="modifyAnswerSubmit" class="action.AnswerAction" method="modifyAnswerSubmit">
+            <result name="success">admin/management/answersManagement.jsp</result>
+        </action>
+        <action name="activateAnswer" class="action.AnswerAction" method="activateAnswer">
+            <result name="success">admin/management/answersManagement.jsp</result>
+        </action>
+
+
+
+        <action name="listFormTrainee" class="action.TraineeAction" method="listFormTrainee">
+            <result name="success">trainee/listForm.jsp</result>
+        </action>
+        <action name="FormTrainee" class="action.TestAction" method="FormTrainee">
+            <result>trainee/testTrainee.jsp</result>
+        </action>
+        <action name="FormTraineeNext" class="action.TestActionNext" method="next">
+            <result name="success">trainee/testTrainee.jsp</result>
+            <result name="result">trainee/testTraineeResult.jsp</result>
+        </action>
+
+
+
+        <action name="ResultTrainee" class="action.TraineeAction" method="seeResult">
+            <result name="success">trainee/resultTrainee.jsp</result>
+        </action>
+
+
+
+        <action name="connexion">
+            <result>connexion.jsp</result>
+        </action>
+        <action name="connect" class="action.UserAction" method="connexion">
+            <result name="adminView">admin/adminView.jsp</result>
+            <result name="failure">echec.jsp</result>
+        </action>
+        <action name="getAll" class="action.UserAction" method="getAll">
+            <result name="success">admin/listUser.jsp</result>
+            <result name="failure">echec.jsp</result>
+        </action>
+    </package>
+</struts>
