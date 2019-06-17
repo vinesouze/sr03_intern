@@ -33,6 +33,7 @@
 
             <div class="row justify-content-md-center">
                 <form action="modifyUserSubmit" method="post">
+                    <input type="hidden" name="User.is_admin" value="${user.is_admin}">
                     <div class="form-group">
                         <label for="user_email">Email</label>
                         <input type="text" class="form-control" id="user_email" name="User.email" value="${user.email}" readonly/>

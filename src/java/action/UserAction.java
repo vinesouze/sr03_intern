@@ -18,6 +18,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.struts2.interceptor.SessionAware;
@@ -39,9 +40,34 @@ public class UserAction extends ActionSupport{
 
     public String addUser() throws SQLException{
         UserDAO userDAO = new UserDAO();
+
+        // ** On génère un password aléatoire
+        String pwd="";
+        Random rand = new Random();
+        String alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
+        int longueur = alphabet.length();
+        for (int i=0; i< 10; i++) {
+            int k = rand.nextInt(longueur);
+            pwd = pwd + alphabet.charAt(k);
+        }
+        getUser().setPassword(pwd);
         System.out.println("GetUser (is_admin): " + user.is_admin() + "\n");
         userDAO.create(getUser());
+         // On actualise toutes les listes users
         setUsers(userDAO.getAll());
+        users_actif = new ArrayList<User>();
+        users_inactif = new ArrayList<User>();
+        for (User user : users) {
+            System.out.println("GetUser email: " + user.getEmail() + "\n");
+            if ((user.getStatus()).equals("actif")) {
+                users_actif.add(user);
+            } else {
+                users_inactif.add(user);
+            }
+        }
+        System.out.println("GetUser_actif email: " + users_actif.get(0).getEmail() + "\n");
+        setUsers_actif(users_actif);
+        setUsers_inactif(users_inactif);
         return "success";
     }
 

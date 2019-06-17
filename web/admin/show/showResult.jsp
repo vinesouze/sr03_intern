@@ -34,7 +34,7 @@
                     </thead>
                     <tbody>
                         <s:iterator value="questions_trainee">
-                            <s:if test="answer.Is_right()" >
+                            <s:if test="answer.is_right()" >
                                 <tr class="text-success">
                             </s:if>
                             <s:else>

@@ -64,7 +64,7 @@
                     </thead>
                     <tbody>
                         <s:iterator value = "answers">
-                            <s:if test="Is_right()" >
+                            <s:if test="is_right()" >
                                 <tr class="text-success">
                             </s:if>
                             <s:else>

@@ -24,14 +24,7 @@
                     </div>
                 </form> 
             </div>
-            <div class="row justify-content-md-center">
-                <form action="getAll" method="post">
-                    <div class="form-group">
-                        <input type="hidden" name="adminMail" value=<s:property value="#session.userMail"/>/>
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Listage des Utilisateurs</button>
-                    </div>
-                </form>
-            </div>
+
             <div class="row justify-content-md-center">   
                 <form action="formManagement" method="post">
                     <div class="form-group"

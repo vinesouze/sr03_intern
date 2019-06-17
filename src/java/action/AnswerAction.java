@@ -49,11 +49,13 @@ public class AnswerAction extends ActionSupport {
         System.out.println("id modifié : " + modifyIdAnswer + "\n");
         AnswerDAO answerdao = new AnswerDAO();
         answer = answerdao.find(modifyIdAnswer).get();
+        System.out.println("id modifié : " + answer.is_right() + "\n");
         return "success";
     }
 
     public String modifyAnswerSubmit() throws Exception {
         AnswerDAO answerdao = new AnswerDAO();
+        System.out.println("id modifié : " + getAnswer().is_right() + "\n");
         answerdao.update(getAnswer());
         
         // On actualise toutes les listes Answers

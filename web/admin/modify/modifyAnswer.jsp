@@ -38,6 +38,7 @@
                     </div>
                     <input type="hidden" name="Answer.id" value="${answer.id}" />
                     <input type="hidden" name="Answer.status" value="${answer.status}" />
+                    <input type="hidden" name="Answer.is_right" value="${answer.is_right}"/>
                     <input type="hidden" name="Answer.rank" value="${answer.rank}" />
                     <input type="hidden" name="Answer.question_id" value="${answer.question_id}" />
                     <input type="hidden" value=${modifyIdForm}  name="modifyIdForm" />

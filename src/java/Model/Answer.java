@@ -60,7 +60,11 @@ public class Answer {
         this.rank = rank;
     }
 
-    public boolean Is_right() {
+    public boolean is_right() {
+        return is_right;
+    }
+
+    public boolean getIs_right() {
         return is_right;
     }
 

@@ -27,28 +27,6 @@ public class User {
     protected String company;
     
     public User() {
-        /*User.this.id = 0;
-        User.this.company = "default";
-        User.this.firstname = "default";
-        User.this.lastname = "default";
-        User.this.tel = "default";
-        User.this.email = "default";
-        User.this.password = "default";
-        User.this.is_admin = false;
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        this.date_creat = dateFormat.format(date);*/
-    }
-    
-    public User(int id, String lastname, String firstname, String email, String password, String tel, String company, Date date_creat) {
-        User.this.id = id;
-        User.this.lastname = lastname;
-        User.this.firstname = firstname;
-        User.this.email = email;
-        User.this.password = password;
-        User.this.tel = password;
-        User.this.company = company;
-        User.this.date_creat = date_creat;
     }
     
     public User(String lastname, String firstname, String email, String password, String tel, String company, Date date_creat, boolean is_admin, String status, String gender) {
@@ -62,19 +40,6 @@ public class User {
         User.this.is_admin = is_admin;
         User.this.status = status;
         User.this.gender = gender;
-    }
-
-    public User(String lastname, String firstname, String email, String gender, String password, String tel, boolean is_admin, String company) {
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.gender = gender;
-        this.password = password;
-        this.is_admin = is_admin;
-        this.date_creat = new Date();
-        this.tel = tel;
-        this.status = "actif";
-        this.company = company;
     }
     
     public int getId() {
@@ -161,7 +126,11 @@ public class User {
         return is_admin;
     }
 
-    public void setAdmin(boolean is_admin) {
+    public boolean getIs_admin() {
+        return is_admin;
+    }
+
+    public void setIs_admin(boolean is_admin) {
         this.is_admin = is_admin;
     }
        

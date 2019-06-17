@@ -40,7 +40,7 @@ public class Test {
         ArrayList<Answer> answers = testdao.getAnswers(id);
         int score=0;
         for (Answer answer : answers) {
-            if(answer.Is_right()) {
+            if(answer.is_right()) {
                 score++;
             }
         }

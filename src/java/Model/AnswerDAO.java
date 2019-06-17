@@ -123,7 +123,7 @@ public class AnswerDAO implements DAO<Answer>{
             statement.setString(1,a.getStatement());
             statement.setString(2,a.getStatus());
             statement.setInt(3,a.getRank()); 
-            statement.setBoolean(4,a.Is_right());
+            statement.setBoolean(4,a.is_right());
             statement.setInt(5,a.getQuestion_id());
 
             System.out.println("Executing command : " + query + "\n");
@@ -151,7 +151,7 @@ public class AnswerDAO implements DAO<Answer>{
             statement.setString(1,a.getStatement());
             statement.setString(2,a.getStatus());
             statement.setInt(3,a.getRank());
-            statement.setBoolean(4,a.Is_right());
+            statement.setBoolean(4,a.is_right());
             statement.setInt(5,a.getQuestion_id());
             statement.setInt(6,a.getId());
             statement.executeUpdate();
